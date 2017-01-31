@@ -4,9 +4,9 @@ import java.util.Calendar;
 
 public final class Negociacao {
 
-	public final double preco;
-	public final int quantidade;
-	public final Calendar data;
+	private final double preco;
+	private final int quantidade;
+	private final Calendar data;
 	
 	public double getPreco() {
 		return preco;
@@ -22,11 +22,11 @@ public final class Negociacao {
 	
 	public double getVoume(){
 		
-		return preco * quantidade;
+		return this.preco * this.quantidade;
 	}
 
 	public Negociacao(double preco, int quantidade, Calendar data) {
-		super();
+		
 		this.preco = preco;
 		this.quantidade = quantidade;
 		this.data = data;

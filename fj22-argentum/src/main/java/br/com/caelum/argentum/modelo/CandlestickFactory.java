@@ -7,12 +7,14 @@ public class CandlestickFactory {
 	
 	public Candlestick constroiCandleParaData(Calendar data, List<Negociacao> negociacoes){
 		
-		double maximo = negociacoes.get(0).getPreco();
-		double minimo = negociacoes.get(0).getPreco();
+		double maximo = 0;
+		double minimo = Double.MAX_VALUE;
 		double volume = 0;
 		
 		for(Negociacao n : negociacoes){
-			
+
+			volume += n.getVoume();
+
 			if(n.getPreco() > maximo){
 				
 				maximo = n.getPreco();
@@ -21,12 +23,15 @@ public class CandlestickFactory {
 				
 				minimo = n.getPreco();
 			}
-			
-			volume += n.getPreco();
 		}
 		
-		double abertura = negociacoes.get(0).getPreco();
-		double fechamento = negociacoes.get(negociacoes.size()-1).getPreco();
+		if(minimo == Double.MAX_VALUE){
+			
+			minimo = 0;
+		}
+		
+		double abertura = negociacoes.isEmpty() ? 0 : negociacoes.get(0).getPreco();
+		double fechamento = negociacoes.isEmpty() ? 0 : negociacoes.get(negociacoes.size()-1).getPreco();
 		return new Candlestick(abertura, fechamento, minimo, maximo, volume, data);
 	}
 }
