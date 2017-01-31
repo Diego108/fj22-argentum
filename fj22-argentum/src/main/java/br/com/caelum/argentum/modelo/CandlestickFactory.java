@@ -7,7 +7,7 @@ public class CandlestickFactory {
 	
 	public Candlestick constroiCandleParaData(Calendar data, List<Negociacao> negociacoes){
 		
-		double maximo = 0;
+		double maximo = negociacoes.get(0).getPreco();
 		double minimo = negociacoes.get(0).getPreco();
 		double volume = 0;
 		
