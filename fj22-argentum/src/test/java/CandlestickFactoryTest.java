@@ -38,4 +38,21 @@ public class CandlestickFactoryTest {
 		Assert.assertEquals(81, candle.getVolume(), 0.00001);
 	}
 
+	@Test
+	public void paraNegociacoesDeTresDiasDistintosGeraTresCandles(){
+		
+		Calendar hoje = Calendar.getInstance();
+		
+		Negociacao n1 = new Negociacao(40.5, 100, hoje);
+		Negociacao n2 = new Negociacao(45.5, 100, hoje);
+		Negociacao n3 = new Negociacao(50.5, 100, hoje);
+		Negociacao n4 = new Negociacao(55.5, 100, hoje);
+		
+		Calendar amanha = Calendar.getInstance();
+		
+		Negociacao n5 = new Negociacao(60.5, 100, amanha);
+		Negociacao n6 = new Negociacao(65.5, 100, amanha);
+		
+		
+	}
 }

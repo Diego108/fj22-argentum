@@ -17,7 +17,7 @@ public final class Negociacao {
 	}
 
 	public Calendar getData() {
-		return data;
+		return (Calendar)this.data.clone();
 	}
 	
 	public double getVoume(){
@@ -27,8 +27,23 @@ public final class Negociacao {
 
 	public Negociacao(double preco, int quantidade, Calendar data) {
 		
+		if(data == null){
+			
+			throw new IllegalArgumentException("data nao pode ser nula");
+		}
+		
 		this.preco = preco;
 		this.quantidade = quantidade;
 		this.data = data;
+	}
+
+	public boolean isMesmoDia(Calendar mesmoMomento) {
+		// TODO Auto-generated method stub
+		return this.data.get(Calendar.DAY_OF_MONTH) ==
+							 	mesmoMomento.get(Calendar.DAY_OF_MONTH) &&
+							 this.data.get(Calendar.MONTH) ==
+							 	mesmoMomento.get(Calendar.MONTH) &&
+							 this.data.get(Calendar.YEAR) ==
+								 mesmoMomento.get(Calendar.YEAR);
 	}
 }
